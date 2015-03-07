@@ -1,25 +1,36 @@
+/*global $:false */
+
 'use strict';
 
-var trace = function(){
-  for(var i = 0; i < arguments.length; i++){
-    console.log(arguments[i]);
-  }
+//namespace
+var MovieApp = MovieApp || {
+  url: 'http://localhost:3000'
 };
 
-var App = App || {};
-
-App.square = function(x){
-  return x * x
+MovieApp.getMovies = function(){
+  $.ajax({
+    url: MovieApp.url + '/movies',
+    type: 'GET',
+    dataType: 'JSON'
+  })
+  .done(function(data) {
+    MovieApp.indexMovies(data);
+    console.log(data);
+  }).fail(function(jqXHR, textStatus, errorThrow) {
+    console.log(jqXHR, textStatus, errorThrow);
+  });
 };
 
-App.cube = function(x){
-  return x * x * x
+MovieApp.indexMovies = function(movies){
+  movies.forEach(MovieApp.renderMovie);
 };
 
-App.greet = function(string){
-  return string = typeof string !== 'undefined' ? 'Hello ' + string : "Hello World";
+MovieApp.renderMovie = function(currentVal, index, array){
+  console.log(currentVal, index);
+
 };
 
 $(document).ready(function(){
-  trace('hello world');
+  console.log('hello world');
+  MovieApp.getMovies();
 });
