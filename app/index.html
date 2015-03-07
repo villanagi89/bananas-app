@@ -18,7 +18,82 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <h1>My new repo template for javascript</h1>
+    <nav>
+      <ul>
+        <li><a href="" title="">Navbar? Maybe!</a></li>
+      </ul>
+    </nav>
+
+    <section class="main-content">
+      <header id="header" class="">
+    <h1>Bananas!</h1>
+    <h2>Review a movie, you cheeky monkey!</h2>
+    </header>
+    </section>
+
+    <div class="posts">
+        <h3>This will be a movie</h3>
+        <p>This will attributes of that movie</p>
+    </div>
+
+    <div class="forms">
+        <div class="movie-form">
+          <h2>Add a Movie to our Jungle!</h2>
+          <form id="new-movie-form">
+            <div class="form-group">
+              <label for="movie-title">Movie Title</label>
+              <input name="movie-title" type="text" placeholder="Movie Title" id='movie-title' />
+              <label for="movie-gross">Gross</label>
+              <input name="movie-gross" type="decimal" placeholder="box office earnings" id='movie-gross' />
+              <label for="movie-release-date">Release Date</label>
+              <input name="movie-release-date" type="text" placeholder="Release Date" id='movie-release-date' />
+              <label for="movie-mpaa-rating">Rating</label>
+              <input name="movie-mpaa-rating" type="text" placeholder="Movie Title" id='movie-mpaa-rating' />
+              <label for="movie-description">Description</label>
+              <textarea name="movie-description" placeholder="Tell us about the plot of this movie.  No spoilers, please!" id="movie-description"></textarea>
+            </div>
+          </form>
+        </div>
+
+
+
+          <div class="review-form">
+          <h2>Add a Review for a Movie!</h2>
+          <form id="new-review-form">
+            <div class="form-group">
+              <label for="review-comment">Comments</label>
+              <textarea name="review-comment" placeholder="Give us your honest opinion!" id="review-comment"></textarea>
+              <label for="review-star-rating">Star Rating</label>
+              <input name="review-star-rating" type="fixnum" id='review-star-rating' />
+              <label for="review-reviewer-name">Reviewer Name</label>
+              <input name="review-reviewer-name" type="text" placeholder="Enter your alias!" id='review-reviewer-name' />
+            </div>
+          </form>
+        </div>
+    </div>
+
+
+ <footer>
+      <div class="footer-content">
+        <div class="column1">
+          We made a thing. Look at it.  LOOK AT IT.
+        </div>
+      </div>
+    </footer>
+
+
+
+
+          <!--   </div>
+            <div class="form-group">
+              <label for="movie-gross">box-office earnings</label>
+              <textarea name="movie-gross" id="movie-gross"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" id='submit' value="Add This Movie" />
+            </div>
+          </form>
+        </div> -->
 
 
     <!-- build:js(.) scripts/oldieshim.js -->
