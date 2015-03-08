@@ -8,9 +8,30 @@ html {
     background-repeat: no-repeat;
 }
 
+h2{
+    // color:yellow;
+    text-align: center;
+}
+
+ul {
+list-style-type: none;
+list-style-image: none;
+}
+
+li{
+    font-syle: sans-serif;
+    font-size: 18px;
+
+}
+
 #wrap {
     width:925px;
     margin:0 auto;
+}
+
+.movies {
+    background: rgba(190,190, 190, 0.7);
+
 }
 
 #header {
@@ -31,7 +52,7 @@ html {
 }
 
 #main {
-    display: inline-block;
+    display: inline;
     float:left;
     width:500px;
     // background:#9c9;
@@ -71,7 +92,7 @@ input{
     width:300px;
     padding:10px;
     margin-top:10px;
-    margin-bottom:35px;
+    margin-bottom:25px;
     border-radius:5px;
     border:1px solid #cbcbcb;
     box-shadow:inset 0 1px 2px rgba(0,0,0,0.18);
@@ -83,7 +104,7 @@ textarea{
     height:100px;
     padding:10px;
     margin-top:10px;
-    margin-bottom:35px;
+    margin-bottom:25px;
     border-radius:5px;
     border:1px solid #cbcbcb;
     box-shadow:inset 0 1px 2px rgba(0,0,0,0.18);
@@ -93,9 +114,10 @@ textarea{
 // <span class="rating">
 
 input[type=submit]{
-    background:linear-gradient(to bottom,#22abe9 5%,#36caf0 100%);
-    box-shadow:inset 0 1px 0 0 #7bdcf4;
-    border:1px solid #0F799E;
+    background: #599a68;
+    // background:linear-gradient(to bottom,#22abe9 5%,#36caf0 100%);
+    // box-shadow:inset 0 1px 0 0 #7bdcf4;
+    border:1px solid #599a68;
     color:#fff;
     font-size:19px;
     font-weight:700;
@@ -104,7 +126,8 @@ input[type=submit]{
 }
 
 input[type=submit]:hover{
-    background:linear-gradient(to bottom,#36caf0 5%,#22abe9 100%)
+    background: #599a50;
+    // background:linear-gradient(to bottom,#36caf0 5%,#22abe9 100%)
 }
 
 

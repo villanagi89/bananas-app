@@ -19,11 +19,12 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <nav>
+
+ <!--    <nav>
       <ul>
         <li><a href="" title="">Navbar? Maybe!</a></li>
       </ul>
-    </nav>
+    </nav> -->
 
     <section class="main-content">
       <header id="header" class="">
@@ -33,22 +34,32 @@
           <h2>Review a movie, you cheeky monkey!</h2>
       </header>
     </section>
-<!-- The DOM element that will hold our results for Handlebars-->
+
+    <div class="movies" id="main">
+        <h2>Movies to Explore</h2>
+    <!-- The DOM element that will hold our results for Handlebars-->
   <div class="posts">Your movies</div>
 
       <!-- HANDLEBARS TEMPLATE -->
-  <script id="results_template" type="text/x-handlebars-template">
-    <ul>
-        {{#each this}}
-            <li>Title: <strong><mark>{{this.title}}</mark></strong>
-                {{#each reviews}}
-                    <h4>{{this.comment}}</h4>
+       <script id="results_template" type="text/x-handlebars-template">
+ <ul>
+{{#each this}}
+            <li><h3><strong>{{this.title}}</strong></h3>
+            <li>Gross: <strong>{{this.gross}}</strong>
+            <li>Release Date: <strong>{{this.release_date}}</strong>
+            <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong>
+            <li>Description: <strong>{{this.description}}</strong>
+            <h4>Reviews from Opinionated Monkeys:</h4>
+              {{#each reviews}}
+                    <li>{{this.comment}}...{{this.star_rating}} stars
+                    <li> -{{this.reviewer_name}}
                 {{/each}}
                 <hr>
             </li>
         {{/each}}
     </ul>
   </script>
+  </div>
 
       <div class="form">
         <form id="new-movie-form" id=
@@ -68,6 +79,7 @@
 
           <label for="movie-description">Description</label>
           <textarea name="movie-description" placeholder="Tell us about the plot of this movie.  No spoilers, please!" id="movie-description"></textarea>
+          <input name="submit-movie" type="submit" value="Add Movie!">
           </form>
         </div>
 <br>
