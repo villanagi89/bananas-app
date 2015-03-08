@@ -15,22 +15,26 @@ MovieApp.getMovies = function(){
   })
   .done(function(data) {
     MovieApp.indexMovies(data);
-    console.log(data);
+    // console.log(data);
   }).fail(function(jqXHR, textStatus, errorThrow) {
     console.log(jqXHR, textStatus, errorThrow);
   });
 };
 
-MovieApp.indexMovies = function(movies){
-  movies.forEach(MovieApp.renderMovie);
+MovieApp.indexMovies = function(data){
+  // movies.forEach(MovieApp.renderMovie);
+  console.log(data);
+  var templateSource = $("#results_template").html();
+  var template = Handlebars.compile(templateSource);
+  $(".posts").html(template(data));
 };
 
-MovieApp.renderMovie = function(currentVal, index, array){
-  console.log(currentVal, index);
-  var movie_html = '<li>' + currentVal.title + '</li>';
-  $('#show_all').append(movie_html);
+// MovieApp.renderMovie = function(currentVal, index, array){
+//   console.log(currentVal, index);
+//   var movie_html = '<li>' + currentVal.title + '</li>';
+//   $('#show_all').append(movie_html);
 
-};
+// };
 
 $(document).ready(function(){
   console.log('hello world');

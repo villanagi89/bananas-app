@@ -18,6 +18,25 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+    <!-- The DOM element that will hold our results for Handlebars-->
+  <div class="posts">HANDLEBARS!</div>
+
+  <!-- HANDLEBARS TEMPLATE -->
+  <script id="results_template" type="text/x-handlebars-template">
+    <ul>
+        {{#each this}}
+            <li>Title: <strong><mark>{{this.title}}</mark></strong>
+                {{#each reviews}}
+                    <h4>{{this.comment}}</h4>
+                {{/each}}
+                <hr>
+            </li>
+        {{/each}}
+    </ul>
+  </script>
+
+
     <h1>My new repo template for javascript</h1>
     <div id ="container">
     <ul id="show_all"></ul>
@@ -34,7 +53,9 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="js/handlebars-v3.0.0.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 
