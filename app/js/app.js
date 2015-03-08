@@ -1,30 +1,57 @@
+/*global $:false */
 'use strict';
 
-var trace = function(){
-  for(var i = 0; i < arguments.length; i++){
-    console.log(arguments[i]);
-  }
+//namespace
+var MovieApp = MovieApp || {
+  url: 'http://localhost:3000'
 };
 
-var App = App || {};
-
-App.square = function(x){
-  return x * x
+MovieApp.getMovies = function(){
+  $.ajax({
+    url: MovieApp.url + '/movies',
+    type: 'GET',
+    dataType: 'JSON'
+  })
+  .done(function(data) {
+    MovieApp.indexMovies(data);
+    // console.log(data);
+  }).fail(function(jqXHR, textStatus, errorThrow) {
+    console.log(jqXHR, textStatus, errorThrow);
+  });
 };
 
-App.cube = function(x){
-  return x * x * x
+MovieApp.indexMovies = function(data){
+  console.log(data);
+  var templateSource = $("#results_template").html();
+  var template = Handlebars.compile(templateSource);
+  $(".posts").html(template(data));
 };
 
-App.greet = function(string){
-  return string = typeof string !== 'undefined' ? 'Hello ' + string : "Hello World";
+MovieApp.submitMovie = function(event){
+  if(event.preventDefault) event.preventDefault();
+  $.ajax({
+    url: 'http://localhost:3000/movies',
+    type: 'POST',
+    dataType: 'JSON',
+    data:{
+      movie: {
+        title: $('input#movie-title').val(),
+        gross: $('input#movie-gross').val(),
+        release_date: $('input#movie-release-date').val(),
+        mpaa_rating: $('input#movie-mpaa-rating').val(),
+        description: $('textarea#movie-description').val()
+    } },
+  }).done(function(data){
+       console.log(data);
+  }).fail(function(jqXHR,textStatus,errorThrown){
+       console.log("error");
+  });
 };
-
 
 
 $(document).ready(function(){
-  trace('hello world');
-
-
-
-});
+  MovieApp.getMovies();
+  $('form#new-movie-form').on('submit', function(event){
+    MovieApp.submitMovie(event);
+  });
+}); //end document.ready
