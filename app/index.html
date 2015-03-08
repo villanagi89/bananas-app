@@ -27,31 +27,28 @@
 
     <section class="main-content">
       <header id="header" class="">
-
-    <span class="logo">
-    <h1>Bananas!</h1>
-    </span>
-
-    <h2>Review a movie, you cheeky monkey!</h2>
-    </header>
+        <span class="logo">
+          <h1>Bananas!</h1>
+        </span>
+          <h2>Review a movie, you cheeky monkey!</h2>
+      </header>
     </section>
+<!-- The DOM element that will hold our results for Handlebars-->
+  <div class="posts">Your movies</div>
 
-    <div class="movies" id="main">
-        <h3>This will be a movie title</h3>
-        <p>This will be a movie's gross</p>
-        <p>This will be a movie's release date</p>
-        <p>This will be a movie's description</p>
-    </div>
-
-   <!--  delete me -->
-
-     <div class="movies" id="main">
-        <h3>This will be another movie title</h3>
-        <p>This is just an example</p>
-        <p>Yolo?</p>
-    </div>
-
-   <!--  /delete me -->
+      <!-- HANDLEBARS TEMPLATE -->
+  <script id="results_template" type="text/x-handlebars-template">
+    <ul>
+        {{#each this}}
+            <li>Title: <strong><mark>{{this.title}}</mark></strong>
+                {{#each reviews}}
+                    <h4>{{this.comment}}</h4>
+                {{/each}}
+                <hr>
+            </li>
+        {{/each}}
+    </ul>
+  </script>
 
       <div class="form">
         <form id="new-movie-form" id=
@@ -234,6 +231,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="js/handlebars-v3.0.0.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->

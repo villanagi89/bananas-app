@@ -22,7 +22,6 @@ MovieApp.getMovies = function(){
 };
 
 MovieApp.indexMovies = function(data){
-  // movies.forEach(MovieApp.renderMovie);
   console.log(data);
   var templateSource = $("#results_template").html();
   var template = Handlebars.compile(templateSource);
