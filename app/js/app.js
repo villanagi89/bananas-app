@@ -26,7 +26,7 @@ App.toggleAddReview = function(){
 
   //toggle show/hide on click
   $("#toggle_add_review").click(function(){
-    $("#new-review-form").toggle();
+    $("#new-review-form").toggle(300);
   });
 };
 
