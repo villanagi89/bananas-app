@@ -27,6 +27,8 @@ MovieApp.indexMovies = function(movies){
 
 MovieApp.renderMovie = function(currentVal, index, array){
   console.log(currentVal, index);
+  var movie_html = '<li>' + currentVal.title + '</li>';
+  $('#show_all').append(movie_html);
 
 };
 
