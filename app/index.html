@@ -19,11 +19,12 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <nav>
+
+ <!--    <nav>
       <ul>
         <li><a href="" title="">Navbar? Maybe!</a></li>
       </ul>
-    </nav>
+    </nav> -->
 
     <section class="main-content">
       <header id="header" class="">
@@ -37,20 +38,23 @@
     </section>
 
     <div class="movies" id="main">
-        <h3>This will be a movie title</h3>
-        <p>This will be a movie's gross</p>
-        <p>This will be a movie's release date</p>
-        <p>This will be a movie's description</p>
-    </div>
+        <h2>Movies to Explore</h2>
+    <!-- The DOM element that will hold our results for Handlebars-->
+  <div class="posts">Your movies</div>
 
-
-
-      <script id="results_template" type="text/x-handlebars-template">
-    <ul>
-        {{#each this}}
-            <li>Title: <strong><mark>{{this.title}}</mark></strong>
-                {{#each reviews}}
-                    <h4>{{this.comment}}</h4>
+      <!-- HANDLEBARS TEMPLATE -->
+       <script id="results_template" type="text/x-handlebars-template">
+ <ul>
+{{#each this}}
+            <li><h3><strong>{{this.title}}</strong></h3>
+            <li>Gross: <strong>{{this.gross}}</strong>
+            <li>Release Date: <strong>{{this.release_date}}</strong>
+            <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong>
+            <li>Description: <strong>{{this.description}}</strong>
+            <h4>Reviews from Opinionated Monkeys:</h4>
+              {{#each reviews}}
+                    <li>{{this.comment}}...{{this.star_rating}} stars
+                    <li> -{{this.reviewer_name}}
                 {{/each}}
                 <hr>
             </li>
@@ -58,14 +62,22 @@
     </ul>
   </script>
 
+
+    </div>
+
+
+
+
+
+
    <!--  delete me -->
 
-     <div class="movies" id="main">
+    <!--  <div class="movies" id="main">
         <h3>This will be another movie title</h3>
         <p>This is just an example</p>
         <p>Yolo?</p>
     </div>
-
+ -->
    <!--  /delete me -->
 
       <div class="form">
@@ -250,6 +262,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="js/handlebars-v3.0.0.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
