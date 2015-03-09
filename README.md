@@ -6,7 +6,8 @@
 ## Project Planning
 - Documentation: Project Specs and Runbook (pdf)
 
-![Project Specs and Runbook](http://beigesavage.com/ga/Bananas-ProjectSpecsandRunbook.pdf)
+![Project Specs and Runbook]
+- http://beigesavage.com/ga/Bananas-ProjectSpecsandRunbook.pdf
 
 - Tracking Workload: Sprints (pdf)
 
