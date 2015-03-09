@@ -48,9 +48,21 @@ MovieApp.submitMovie = function(event){
   });
 };
 
+MovieApp.toggleAddReview = function(){
+  //initial state of add review form is hidden
+  $("#new-review-form").hide();
+
+  //toggle show/hide on click
+  $("#toggle_add_review").click(function(){
+    $("#new-review-form").toggle(300);
+  });
+};
 
 $(document).ready(function(){
   MovieApp.getMovies();
+
+  MovieApp.toggleAddReview();
+
   $('form#new-movie-form').on('submit', function(event){
     MovieApp.submitMovie(event);
   });
