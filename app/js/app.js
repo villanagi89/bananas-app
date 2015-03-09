@@ -3,7 +3,7 @@
 
 //namespace
 var MovieApp = MovieApp || {
-  url: 'http://localhost:3000'
+  url: 'https://bananas-movie-reviews.herokuapp.com'
 };
 
 MovieApp.getMovies = function(){
@@ -30,7 +30,7 @@ MovieApp.indexMovies = function(data){
 MovieApp.submitMovie = function(event){
   if(event.preventDefault) event.preventDefault();
   $.ajax({
-    url: 'http://localhost:3000/movies',
+    url: MovieApp.url + '/movies',
     type: 'POST',
     dataType: 'JSON',
     data:{
