@@ -2,9 +2,13 @@
 
 # Bananas App!  Movie API Mini-Project
 
-## Objectives
-- Objective 1
-- Objective 2
-- Objective 3
+## Pre Planning
+- Table Structure
 
-## Instructions
+http://beigesavage.com/ga/bananas-preplanning_table_structure.jpeg
+
+- Model Relationships
+http://beigesavage.com/ga/bananas-preplanning_model_relationships.jpeg
+
+## Git Workflow
+http://beigesavage.com/ga/Git_workflow_diagram.JPG
