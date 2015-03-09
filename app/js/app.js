@@ -44,8 +44,16 @@ MovieApp.submitMovie = function(event){
   }).done(function(data){
        console.log(data);
 
-       //load all movies after submitting a new movie
+       //after submitting a new movie: load all movies
        MovieApp.getMovies();
+
+       //after submitting a new movie: set fields blank again
+        $('input#movie-title').val(''),
+        $('input#movie-gross').val(''),
+        $('input#movie-release-date').val(''),
+        $('input#movie-mpaa-rating').val(''),
+        $('textarea#movie-description').val('')
+
   }).fail(function(jqXHR,textStatus,errorThrown){
        console.log("error");
   });
