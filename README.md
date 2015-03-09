@@ -4,14 +4,10 @@
 - API server on Heroku at: https://bananas-movie-reviews.herokuapp.com/movies
 
 ## Project Planning
-- Documentation: Project Specs and Runbook (pdf)
-
-Project Specs and Runbook
+Documentation: Project Specs and Runbook (pdf)
 - http://beigesavage.com/ga/Bananas-ProjectSpecsandRunbook.pdf
 
-- Tracking Workload: Sprints (pdf)
-
-Sprints
+Tracking Workload: Sprints (pdf)
 - http://beigesavage.com/ga/Bananas-Sprints.pdf
 
 ## Pre Planning
