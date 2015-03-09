@@ -43,6 +43,9 @@ MovieApp.submitMovie = function(event){
     } },
   }).done(function(data){
        console.log(data);
+
+       //load all movies after submitting a new movie
+       MovieApp.getMovies();
   }).fail(function(jqXHR,textStatus,errorThrown){
        console.log("error");
   });
@@ -50,7 +53,7 @@ MovieApp.submitMovie = function(event){
 
 MovieApp.toggleAddReview = function(){
   //initial state of add review form is hidden
-  $("#new-review-form").hide();
+  // $("#new-review-form").hide();
 
   //toggle show/hide on click
   $("#toggle_add_review").click(function(){
