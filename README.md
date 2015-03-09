@@ -1,6 +1,7 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# Bananas App!  Movie API Mini-Project
+# Bananas App!  Movie API Mini-Project with Nicole, Cara & Gina
+- API server on Heroku at: https://bananas-movie-reviews.herokuapp.com/movies
 
 ## Project Planning
 - Documentation: Project Specs and Runbook (pdf)
