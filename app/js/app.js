@@ -3,7 +3,7 @@
 
 //namespace
 var MovieApp = MovieApp || {
-  url: 'http://localhost:3000'
+  url: 'https://bananas-movie-reviews.herokuapp.com'
 };
 
 MovieApp.getMovies = function(){
@@ -30,7 +30,7 @@ MovieApp.indexMovies = function(data){
 MovieApp.submitMovie = function(event){
   if(event.preventDefault) event.preventDefault();
   $.ajax({
-    url: 'http://localhost:3000/movies',
+    url: MovieApp.url + '/movies',
     type: 'POST',
     dataType: 'JSON',
     data:{
@@ -43,14 +43,37 @@ MovieApp.submitMovie = function(event){
     } },
   }).done(function(data){
        console.log(data);
+
+       //after submitting a new movie: load all movies
+       MovieApp.getMovies();
+
+       //after submitting a new movie: set fields blank again
+        $('input#movie-title').val(''),
+        $('input#movie-gross').val(''),
+        $('input#movie-release-date').val(''),
+        $('input#movie-mpaa-rating').val(''),
+        $('textarea#movie-description').val('')
+
   }).fail(function(jqXHR,textStatus,errorThrown){
        console.log("error");
   });
 };
 
+MovieApp.toggleAddReview = function(){
+  //initial state of add review form is hidden
+  // $("#new-review-form").hide();
+
+  //toggle show/hide on click
+  $("#toggle_add_review").click(function(){
+    $("#new-review-form").toggle(300);
+  });
+};
 
 $(document).ready(function(){
   MovieApp.getMovies();
+
+  MovieApp.toggleAddReview();
+
   $('form#new-movie-form').on('submit', function(event){
     MovieApp.submitMovie(event);
   });
