@@ -2,6 +2,15 @@
 
 # Bananas App!  Movie API Mini-Project
 
+## Project Planning
+- Documentation: Project Specs and Runbook (pdf)
+
+![Project Specs and Runbook](http://beigesavage.com/ga/Bananas-ProjectSpecsandRunbook.pdf)
+
+- Tracking Workload: Sprints (pdf)
+
+![Sprints](http://beigesavage.com/ga/Bananas-Sprints.pdf)
+
 ## Pre Planning
 - Table Structure
 
@@ -16,11 +25,4 @@
 
 ![Git Workflow Diagram](http://beigesavage.com/ga/Git_workflow_diagram.JPG)
 
-## Project Planning
-- Documentation: Project Specs and Runbook
 
-![Project Specs and Runbook](http://beigesavage.com/ga/Bananas-ProjectSpecsandRunbook.pdf)
-
-- Tracking Workload: Sprints
-
-![Sprints](http://beigesavage.com/ga/Bananas-Sprints.pdf)
