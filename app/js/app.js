@@ -22,10 +22,13 @@ MovieApp.getMovies = function(){
 };
 
 MovieApp.indexMovies = function(data){
-  console.log(data);
+  // console.log(data);
   var templateSource = $("#results_template").html();
   var template = Handlebars.compile(templateSource);
   $(".posts").html(template(data));
+  for (var i = 0; i < data.length; i++){
+    MovieApp.addToDropDown(data[i]);
+  }
 };
 
 MovieApp.submitMovie = function(event){
@@ -43,7 +46,7 @@ MovieApp.submitMovie = function(event){
         description: $('textarea#movie-description').val()
     } },
   }).done(function(data){
-       console.log(data);
+       // console.log(data);
 
        //after submitting a new movie: load all movies
        MovieApp.getMovies();
@@ -70,6 +73,40 @@ MovieApp.toggleAddReview = function(){
   });
 };
 
+MovieApp.createReview = function(event){
+  event.preventDefault();
+  // MovieApp.setupAjaxRequests();
+  App.setupAjaxRequests(); //app is your iffe
+  $.ajax({
+    url: MovieApp.url + '/movies/'+ $("#movie-dropdown").val()+'/reviews',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {
+      review: {
+        comment: $('#review-comment').val(),
+        star_rating: Number($('.rating-input:checked')[0].value),
+        reviewer_name: $('#review-reviewer-name').val()
+      }
+    }
+  }).done(function(data){
+    console.table(data);
+  }).fail();
+};
+
+// MovieApp.setupAjaxRequests = function() {
+//     var authToken = localStorage.getItem('authToken');
+//     $.ajaxPrefilter(function( options ) {
+//       options.headers = {};
+//       options.headers['AUTHORIZATION'] = "Token token=" + authToken;
+//     });
+//   };
+
+MovieApp.addToDropDown = function(movie){
+  // <option value='1'>First Movie</option>
+  var movieHtml = "<option value=" + movie.id + ">" + movie.title + "</option>";
+  $("#movie-dropdown").append(movieHtml);
+};
+
 $(document).ready(function(){
   MovieApp.getMovies();
 
@@ -77,5 +114,8 @@ $(document).ready(function(){
 
   $('form#new-movie-form').on('submit', function(event){
     MovieApp.submitMovie(event);
+  });
+  $('.submit-btn').on('click', function(event){
+    MovieApp.createReview(event);
   });
 }); //end document.ready
