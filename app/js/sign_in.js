@@ -65,16 +65,16 @@ var App = (function() {
   // Let's assume that this requires login
   var loadPosts = function() {
     $.ajax({
-      url: apiHost + '/posts',
+      url: apiHost + '/movies',
       type: 'GET',
       dataType: 'json',
     })
-    .done(displayPosts)
+    .done(displayMovies)
     .fail(acceptFailure);
   };
 
-  var displayPosts = function(posts) {
-    console.table(posts);
+  var displayMovies = function(movies) {
+    console.table(movies);
   };
 
   var acceptFailure = function(error) {
@@ -86,7 +86,8 @@ var App = (function() {
     }
   };
 
-  return {run: run};
+  return {run: run,
+          setupAjaxRequests: setupAjaxRequests};
 })();
 
 

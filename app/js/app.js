@@ -75,6 +75,7 @@ MovieApp.toggleAddReview = function(){
 
 MovieApp.createReview = function(event){
   event.preventDefault();
+  App.setupAjaxRequests();
   $.ajax({
     url: MovieApp.url + '/movies/'+ $("#movie-dropdown").val()+'/reviews',
     type: 'POST',
