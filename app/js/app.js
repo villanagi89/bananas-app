@@ -75,7 +75,12 @@ MovieApp.toggleAddReview = function(){
 
 MovieApp.createReview = function(event){
   event.preventDefault();
+<<<<<<< HEAD
   App.setupAjaxRequests();
+=======
+  // MovieApp.setupAjaxRequests();
+  App.setupAjaxRequests(); //app is your iffe
+>>>>>>> 74c225806f883ad63ae959edb2e559598f2c3b5b
   $.ajax({
     url: MovieApp.url + '/movies/'+ $("#movie-dropdown").val()+'/reviews',
     type: 'POST',
@@ -91,6 +96,14 @@ MovieApp.createReview = function(event){
     console.table(data);
   }).fail();
 };
+
+// MovieApp.setupAjaxRequests = function() {
+//     var authToken = localStorage.getItem('authToken');
+//     $.ajaxPrefilter(function( options ) {
+//       options.headers = {};
+//       options.headers['AUTHORIZATION'] = "Token token=" + authToken;
+//     });
+//   };
 
 MovieApp.addToDropDown = function(movie){
   // <option value='1'>First Movie</option>
