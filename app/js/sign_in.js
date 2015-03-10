@@ -18,23 +18,25 @@ var App = (function() {
 
   var submitRegistration = function(event) {
     event.preventDefault();
-
-    $.ajax({
-      url: apiHost + '/users',
-      type: 'POST',
-      data: {user: {email: $('#email').val(), password: $('#password').val()}},
-    })
-    .done(loginSuccess)
-    .fail(function(err) {
-      console.log(err);
-    });
-
+    if ($('#password').val().length > 7){
+      $.ajax({
+        url: apiHost + '/users',
+        type: 'POST',
+        data: {user: {email: $('#email').val(), password: $('#password').val()}},
+      })
+      .done(loginSuccess)
+      .fail(function(err) {
+        console.log(err);
+      });
+    } else {
+      alert("don't be dumb");
+    }
     return false;
   };
 
   var loginSuccess = function(userData) {
     localStorage.setItem('authToken', userData.token);
-    console.log('logged in!');
+    console.log(userData);
     window.location.href = '/';
   };
 
@@ -86,7 +88,8 @@ var App = (function() {
     }
   };
 
-  return {run: run};
+  return {run: run,
+          setupAjaxRequests: setupAjaxRequests};
 })();
 
 
