@@ -45,15 +45,30 @@
        <script id="results_template" type="text/x-handlebars-template">
   <ul>
       {{#each this}}
+        <div id=movie-{{this.id}}>
             <li><h3><strong>{{this.title}}</strong></h3>
-            <li>Gross: <strong>{{this.gross}}</strong>
-            <li>Release Date: <strong>{{this.release_date}}</strong>
-            <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong>
-            <li>Description: <strong>{{this.description}}</strong>
+            <li><h3><strong>{{this.id}}</strong></h3>
+            <li>Gross: <strong>{{this.gross}}</strong></li>
+            <li>Release Date: <strong>{{this.release_date}}</strong></li>
+            <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong></li>
+            <li>Description: <strong>{{this.description}}</strong></li>
+
             <h4>Reviews from Opinionated Monkeys:</h4>
               {{#each reviews}}
-                    <li>{{this.comment}}...{{this.star_rating}} stars
-                    <li> -{{this.reviewer_name}}
+                  <div id=review-{{this.id}}>
+                    <li id=> Review ID: {{this.id}}</li>
+                    <li id=review-comment-{{this.comment}}> Review Comment: {{this.comment}}</li>
+                    <li> Star Rating: {{this.star_rating}} </li>
+                    <li> Reviewer Name: {{this.reviewer_name}}</li>
+
+                    <button id=edit-review-{{this.id}} class=edit>Edit Review</button>
+                    <div id=edit-review-form-{{this.id}}></div>
+
+                    <label for=review-comment-field-{{this.id}}>Comment: </label>
+                    <input type=text id=review-comment-field-{{this.id}} value="{{this.comment}}"/>
+
+                    <br>
+                  </div>
                 {{/each}}
 
             <!--
@@ -62,8 +77,9 @@
               // </div>
               -->
 
-
             </li>
+          </div>
+
             <hr>
         {{/each}}
 
@@ -111,7 +127,9 @@
               </div>
 
             </form>
-          </div>
+            </div> <!-- end form-group -->
+
+
 
   </div>
 
@@ -143,7 +161,7 @@
           <textarea name="movie-description" placeholder="Tell us about the plot of this movie.  No spoilers, please!" id="movie-description"></textarea>
           <input name="submit-movie" type="submit" value="Add Movie!">
           </form>
-        </div>
+      </div>
 <br>
 <br>
 <br>
