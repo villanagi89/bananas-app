@@ -1,5 +1,5 @@
 <!DOCTYPE html> <html> <head> <title>Bananas!</title> <meta charset="utf-8"> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!--    Place favicon.ico and apple-touch-icon.png in the root directory --> <!-- build:css(.) styles/vendor.css
-    <!-- bower:css --> <!-- endbower --> <!-- endbuild --> <link rel="stylesheet" href="styles/main.4ea14521.css">  <div id="wrap"> <body> <!--[if lt IE 7]>
+    <!-- bower:css --> <!-- endbower --> <!-- endbuild --> <link rel="stylesheet" href="styles/main.2f3f932b.css">  <div id="wrap"> <body> <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <!--    <nav>
       <ul>
@@ -7,110 +7,34 @@
       </ul>
     </nav> --> <section class="main-content"> <header id="header" class=""> <span class="logo"> <h1>Bananas!</h1> </span> <h2>Review a movie, you cheeky monkey!</h2> </header> </section> <div class="movies" id="main"> <h2>Movies to Explore</h2> <!-- The DOM element that will hold our results for Handlebars--> <div class="posts">Your movies</div> <!-- HANDLEBARS TEMPLATE --> <script id="results_template" type="text/x-handlebars-template"><ul>
       {{#each this}}
-            <li><h3><strong>{{this.title}}</strong></h3>
-            <li>Gross: <strong>{{this.gross}}</strong>
-            <li>Release Date: <strong>{{this.release_date}}</strong>
-            <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong>
-            <li>Description: <strong>{{this.description}}</strong>
+        <div id=movie-{{this.id}} class=moviebox>
+            <li><h3><strong>{{this.title}}</strong></h3></li>
+            <li>Gross: <strong>{{this.gross}}</strong></li>
+            <li>Release Date: <strong>{{this.release_date}}</strong></li>
+            <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong></li>
+            <li>Description: <strong>{{this.description}}</strong></li>
+
             <h4>Reviews from Opinionated Monkeys:</h4>
               {{#each reviews}}
-                    <li>{{this.comment}}...{{this.star_rating}} stars
-                    <li> -{{this.reviewer_name}}
+                  <div id=review-{{id}}>
+                    <li id=review-comment-parent-{{../id}} data-parent-index-number={{../id}}></li>
+                    <li id=review-comment-{{comment}}>Review: {{comment}}</li>
+                    <li> Star Rating: {{star_rating}} </li>
+                    <li> Reviewer Name: {{reviewer_name}}</li>
+
+                  <button id=edit-review-b-{{this.id}} class=edit-review data-reviewId={{this.id}}>Edit Review</button><br>
+
+              <form id=edit-review-b-form-{{this.id}} class=edit-review-b-form>
+                      <input type=text id=review-comment-field-{{this.id}} value="{{this.comment}}" />
+                      <input type="submit" value="Update Review"/>
+              </form>
+
+                    <br>
+                  </div>
                 {{/each}}
-
-            <!--
-              // <div>
-              //   <button id="toggle_add_review">Add Your Review</button>
-              // </div>
-              -->
-
-          <div class="review-form">
-          <h4>Add a Review for a Movie!</h4>
-          <form id="new-review-form">
-            <div class="form-group">
-              <label for="review-comment">Comments</label>
-              <textarea name="review-comment" placeholder="Give us your honest opinion!" id="review-comment"></textarea>
-
-              <label for="review-reviewer-name">Reviewer Name</label>
-              <input name="review-reviewer-name" type="text" placeholder="Enter your alias!" id='review-reviewer-name' />
-
-                 <!--    STARS -->
-                <label for="review-star-rating">Star Rating</label>
-                <span class="rating">
-                <!--    <input name="review-star-rating" type="fixnum" id='review-star-rating' /> -->
-                        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
-                        <label for="rating-input-1-5" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-4" name="rating-input-1"/>
-                        <label for="rating-input-1-4" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-3" name="rating-input-1"/>
-                        <label for="rating-input-1-3" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-2" name="rating-input-1"/>
-                        <label for="rating-input-1-2" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-1" name="rating-input-1"/>
-                        <label for="rating-input-1-1" class="rating-star"></label>
-                </span>
-                 <!--    /STARS -->
-              </div>
-
-            </form>
-          </div>
-
             </li>
-            <hr>
+        </div> <!-- //movie div -->
         {{/each}}
-
-  </ul></script> </div> <div class="form"> <form id="new-movie-form" id="sidebar"> <h2>Add a Movie to our Jungle!</h2> <label for="movie-title">Movie Title</label> <input name="movie-title" type="text" placeholder="Movie Title" id="movie-title"> <label for="movie-gross">Gross</label> <input name="movie-gross" type="decimal" placeholder="box office earnings" id="movie-gross"> <label for="movie-release-date">Release Date</label> <input name="movie-release-date" type="text" placeholder="Release Date" id="movie-release-date"> <label for="movie-mpaa-rating">Rating</label> <select> <option>Select Rating <option>G <option>PG <option>PG-13 <option>R <option>NC-17 </select> <label for="movie-description">Description</label> <textarea name="movie-description" placeholder="Tell us about the plot of this movie.  No spoilers, please!" id="movie-description"></textarea> <input name="submit-movie" type="submit" value="Add Movie!"> </form> </div> <br> <br> <br> <br> <br> <br> <br> <br> <!--
-        <div class="review-form">
-           <h4>Add a Review for a Movie!</h4>
-
-
-
-           <form id="new-review-form">
-             <div class="form-group">
-               <label for="review-comment">Comments</label> --> <!-- <div class="form">
-          <div class="review-form">
-          <h2>Add a Review for a Movie!</h2>
-
-          <button id="toggle_add_review">Add Your Review</button>
-
-          <form id="new-review-form">
-              <label for="review-comment">Comments</label>
-              <textarea name="review-comment" placeholder="Give us your honest opinion!" id="review-comment"></textarea> --> <!--    STARS --> <!-- <label for="review-star-rating">Star Rating</label> --> <!-- <span class="rating"> --> <!--    <input name="review-star-rating" type="fixnum" id='review-star-rating' /> --> <!-- <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
-                        <label for="rating-input-1-5" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-4" name="rating-input-1"/>
-                        <label for="rating-input-1-4" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-3" name="rating-input-1"/>
-                        <label for="rating-input-1-3" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-2" name="rating-input-1"/>
-                        <label for="rating-input-1-2" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-1" name="rating-input-1"/>
-                        <label for="rating-input-1-1" class="rating-star"></label>
-                </span> --> <!--    /STARS --> <!--  <label for="review-reviewer-name">Reviewer Name</label>
-              <input name="review-reviewer-name" type="text" placeholder="Enter your alias!" id='review-reviewer-name' />
-            </div>
-            </div>
-            </form>
-          </form>
-        </div> --> <br> <br> <footer> <div class="footer-content"> <div class="column1"> We made a thing. Look at it. LOOK AT IT. </div> </div> </footer> <!--   </div>
-            <div class="form-group">
-              <label for="movie-gross">box-office earnings</label>
-              <textarea name="movie-gross" id="movie-gross"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" id='submit' value="Add This Movie" />
-            </div>
-          </form>
-        </div>
-
-
-    <!--[if lt IE 9]>
+  </ul></script> <hr> <div class="review-form"> <h2>Add a Review for a Movie!</h2> <form id="new-review-form"> <div class="form-group"> <label for="review-comment">Comments</label><br> <textarea name="review-comment" placeholder="Give us your honest opinion!" id="review-comment"></textarea><br> <label for="review-reviewer-name">Reviewer Name</label><br> <input name="review-reviewer-name" type="text" placeholder="Enter your alias!" id="review-reviewer-name"><br> <!--    STARS --> <label for="review-star-rating">Star Rating</label><br> <span class="rating"> <!--    <input name="review-star-rating" type="fixnum" id='review-star-rating' /> --> <input type="radio" class="rating-input" value="5" id="rating-input-1-5" name="rating-input-1"> <label for="rating-input-1-5" class="rating-star"></label> <input type="radio" class="rating-input" id="rating-input-1-4" value="4" name="rating-input-1"> <label for="rating-input-1-4" class="rating-star"></label> <input type="radio" class="rating-input" id="rating-input-1-3" value="3" name="rating-input-1"> <label for="rating-input-1-3" class="rating-star"></label> <input type="radio" class="rating-input" id="rating-input-1-2" value="2" name="rating-input-1"> <label for="rating-input-1-2" class="rating-star"></label> <input type="radio" class="rating-input" id="rating-input-1-1" value="1" name="rating-input-1"> <label for="rating-input-1-1" class="rating-star"></label> </span> <!--    /STARS --> <select id="movie-dropdown"> </select> <input type="submit" class="submit-btn"> </div> <!-- form-group --> </form></div> <!-- end form-group -->  <!-- #new-review-form --> </div> <!-- .review-form --> <div class="border_box"> <form id="new-movie-form" id="sidebar"> <h2>Add a Movie to our Jungle!</h2> <label for="movie-title">Movie Title</label> <input name="movie-title" type="text" placeholder="Movie Title" id="movie-title"> <label for="movie-gross">Gross</label> <input name="movie-gross" type="decimal" placeholder="box office earnings" id="movie-gross"> <label for="movie-release-date">Release Date</label> <input name="movie-release-date" type="text" placeholder="Release Date" id="movie-release-date"> <label for="movie-mpaa-rating">Rating</label> <select> <option>Select Rating <option>G <option>PG <option>PG-13 <option>R <option>NC-17 </select> <label for="movie-description">Description</label> <textarea name="movie-description" placeholder="Tell us about the plot of this movie.  No spoilers, please!" id="movie-description"></textarea> <input name="submit-movie" type="submit" value="Add Movie!"> </form> </div> <!-- .form --> <footer> <div class="footer-content"> <div class="column1"> We made a thing. Look at it. LOOK AT IT. </div> </div> <!-- .footer-content --> </footer> <!--[if lt IE 9]>
     <script src="scripts/oldieshim.d41d8cd9.js"></script>
-    <![endif]--> <script src="scripts/vendor.73e6ca28.js"></script> <script src="scripts/scripts.bcb03ba3.js"></script>  </div>
+    <![endif]--> <script src="scripts/vendor.73e6ca28.js"></script> <script src="scripts/scripts.a39de525.js"></script>  </div>
