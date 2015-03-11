@@ -3,8 +3,8 @@
 
 //namespace
 var MovieApp = MovieApp || {
-  // url: 'https://bananas-movie-reviews.herokuapp.com'
-  url: 'http://localhost:3000'
+  url: 'https://bananas-movie-reviews.herokuapp.com'
+  // url: 'http://localhost:3000'
 };
 
 MovieApp.getMovies = function(){
