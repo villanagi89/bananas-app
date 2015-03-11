@@ -21,14 +21,70 @@ MovieApp.getMovies = function(){
   });
 };
 
+MovieApp.editReview = function(event, movie_id){
+  // alert(event.currentTarget.id); //the Edit Review button id: edit-review-b-x,
+
+  //isolate the id of the review when Edit Review button is clicked
+  var review_id = event.currentTarget.id.replace('edit-review-b-', '');
+
+// debugger;
+
+  //hide/show the edit review form
+  $('#edit-review-b-form-' + review_id).toggle();
+
+  //
+  $('form#edit-review-b-form-' + review_id).on('submit',function(event){
+    event.preventDefault();
+
+    console.log("The movie id is CURRENTLY: " + movie_id);
+    console.log("The review id is CURRENTLY: " + review_id);
+    var single_quote = "'"
+
+  $.ajax({
+    url: MovieApp.url + '/movies/' + movie_id + '/reviews/' + review_id + single_quote,
+    type: 'PATCH',
+    dataType: 'JSON',
+    data: {
+      review: {
+        comment: $('#review-comment-field-' + review_id).val(),
+        // star_rating: Number($('.rating-input:checked')[0].value),
+        // reviewer_name: $('#review-reviewer-name').val()
+      }
+    }
+  }).done(function(data){
+    console.log(data)
+    //after submitting a new movie: load all movies
+    MovieApp.getMovies();
+  }).fail();
+
+  });
+};
+
+
 MovieApp.indexMovies = function(data){
   // console.log(data);
   var templateSource = $("#results_template").html();
   var template = Handlebars.compile(templateSource);
   $(".posts").html(template(data));
+
+  //hide all edit review forms on initial load
+  $('.edit-review-b-form').hide();
+
   for (var i = 0; i < data.length; i++){
     MovieApp.addToDropDown(data[i]);
   }
+
+  //edit review
+  $(".edit-review").on('click', function(event){
+    //get the id of this movie
+    var movie_id = $(this).parent().parent().attr("id").replace('movie-', '');
+    // alert("This movie id is: " + this_movie_id);
+
+    //call editReview, pass event and movie_id
+    MovieApp.editReview(event, movie_id);
+
+
+  });
 };
 
 MovieApp.submitMovie = function(event){
@@ -60,16 +116,6 @@ MovieApp.submitMovie = function(event){
 
   }).fail(function(jqXHR,textStatus,errorThrown){
        console.log("error");
-  });
-};
-
-MovieApp.toggleAddReview = function(){
-  //initial state of add review form is hidden
-  // $("#new-review-form").hide();
-
-  //toggle show/hide on click
-  $("#toggle_add_review").click(function(){
-    $("#new-review-form").toggle(300);
   });
 };
 
@@ -110,12 +156,12 @@ MovieApp.addToDropDown = function(movie){
 $(document).ready(function(){
   MovieApp.getMovies();
 
-  MovieApp.toggleAddReview();
-
   $('form#new-movie-form').on('submit', function(event){
     MovieApp.submitMovie(event);
   });
+
   $('.submit-btn').on('click', function(event){
     MovieApp.createReview(event);
   });
+
 }); //end document.ready

@@ -46,8 +46,8 @@
   <ul>
       {{#each this}}
         <div id=movie-{{this.id}}>
-            <li><h3><strong>{{this.title}}</strong></h3>
-            <li><h3><strong>{{this.id}}</strong></h3>
+            <li><h3><strong>{{this.title}}</strong></h3></li>
+            <li>Movie ID: {{this.id}}</li>
             <li>Gross: <strong>{{this.gross}}</strong></li>
             <li>Release Date: <strong>{{this.release_date}}</strong></li>
             <li>MPAA Rating: <strong>{{this.mpaa_rating}}</strong></li>
@@ -55,34 +55,28 @@
 
             <h4>Reviews from Opinionated Monkeys:</h4>
               {{#each reviews}}
-                  <div id=review-{{this.id}}>
-                    <li id=> Review ID: {{this.id}}</li>
-                    <li id=review-comment-{{this.comment}}> Review Comment: {{this.comment}}</li>
-                    <li> Star Rating: {{this.star_rating}} </li>
-                    <li> Reviewer Name: {{this.reviewer_name}}</li>
+                  <div id=review-{{id}}>
+                    <li> Review ID: {{id}}</li>
+                    <li id=review-comment-parent-{{../id}} data-parent-index-number={{../id}}> Parent ID: {{../id}}</li>
+                    <li id=review-comment-{{comment}}> Review Comment: {{comment}}</li>
+                    <li> Star Rating: {{star_rating}} </li>
+                    <li> Reviewer Name: {{reviewer_name}}</li>
 
-                    <button id=edit-review-{{this.id}} class=edit>Edit Review</button>
-                    <div id=edit-review-form-{{this.id}}></div>
+                  <button id=edit-review-b-{{this.id}} class=edit-review data-reviewId={{this.id}}>Edit Review</button>
 
-                    <label for=review-comment-field-{{this.id}}>Comment: </label>
-                    <input type=text id=review-comment-field-{{this.id}} value="{{this.comment}}"/>
+              <form id=edit-review-b-form-{{this.id}} class=edit-review-b-form>
+                      <input type=text id=review-comment-field-{{this.id}} value="{{this.comment}}" />
+                      <input type="submit" value="Update Review"/>
+              </form>
 
                     <br>
                   </div>
                 {{/each}}
-
-            <!--
-              // <div>
-              //   <button id="toggle_add_review">Add Your Review</button>
-              // </div>
-              -->
-
             </li>
-          </div>
+        </div> <!-- //movie div -->
 
             <hr>
         {{/each}}
-
   </ul>
   </script>
 
@@ -162,68 +156,10 @@
           <input name="submit-movie" type="submit" value="Add Movie!">
           </form>
       </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<!--
-        <div class="review-form">
-           <h4>Add a Review for a Movie!</h4>
-
-
-
-           <form id="new-review-form">
-             <div class="form-group">
-               <label for="review-comment">Comments</label> -->
-
-
-
-          <!-- <div class="form">
-          <div class="review-form">
-          <h2>Add a Review for a Movie!</h2>
-
-          <button id="toggle_add_review">Add Your Review</button>
-
-          <form id="new-review-form">
-              <label for="review-comment">Comments</label>
-              <textarea name="review-comment" placeholder="Give us your honest opinion!" id="review-comment"></textarea> -->
-
-                 <!--    STARS -->
-                <!-- <label for="review-star-rating">Star Rating</label> -->
-                   <!-- <span class="rating"> -->
-                <!--    <input name="review-star-rating" type="fixnum" id='review-star-rating' /> -->
-                        <!-- <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>
-                        <label for="rating-input-1-5" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-4" name="rating-input-1"/>
-                        <label for="rating-input-1-4" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-3" name="rating-input-1"/>
-                        <label for="rating-input-1-3" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-2" name="rating-input-1"/>
-                        <label for="rating-input-1-2" class="rating-star"></label>
-                        <input type="radio" class="rating-input"
-                                id="rating-input-1-1" name="rating-input-1"/>
-                        <label for="rating-input-1-1" class="rating-star"></label>
-                </span> -->
-                 <!--    /STARS -->
-
-             <!--  <label for="review-reviewer-name">Reviewer Name</label>
-              <input name="review-reviewer-name" type="text" placeholder="Enter your alias!" id='review-reviewer-name' />
-            </div>
-            </div>
-            </form>
-          </form>
-        </div> -->
-
 
 <br>
 <br>
+
  <footer>
       <div class="footer-content">
         <div class="column1">
@@ -231,21 +167,6 @@
         </div>
       </div>
     </footer>
-
-
-
-
-          <!--   </div>
-            <div class="form-group">
-              <label for="movie-gross">box-office earnings</label>
-              <textarea name="movie-gross" id="movie-gross"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" id='submit' value="Add This Movie" />
-            </div>
-          </form>
-        </div>
-
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
